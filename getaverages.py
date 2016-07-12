@@ -1,8 +1,9 @@
 #rename file calculatebut keep as getaverages for now
+adj, date, openprice, high, low, close, volume = [], [], [], [], [], [], []
 def readfile(file) :
     with open(file) as f:
         #date,openprice,high,low,close,volume,
-        adj, date, openprice, high, low, close, volume = [], [], [], [], [], [], []
+
         for line in f:
             words = line.split(",")
             date.append(words[0])
@@ -13,13 +14,8 @@ def readfile(file) :
             volume.append(words[5])
             adj.append(words[6].rstrip('\n'))
         del adj[0]
-        del date[0]
-        del openprice[0]
-        del high[0]
-        del low[0]
-        del close[0]
-        del volume[0]
         calculatechange(adj)
+
 def calculatechange(adj):
     change, gains, losses = [], [], []
     for i in range(0,len(adj)-1):
@@ -65,13 +61,18 @@ def findrs(averagegain,averageloss):
             rs.append(0)
         else:
             rs.append(averagegain[i]/averageloss[i])
-    print(rs)
-    print(len(rs))
     findrsi(rs)
 
-#
-# def findrsi(rs):
-#     rsi=[]
-#     for i
 
-#def write
+def findrsi(rs):
+    rsi=[]
+    for i in range(0,len(rs)):
+        rsivalue = 100 - (100/(1+rs[i]))
+        rsi.append(rsivalue)
+        print(rsivalue)
+    #addheaders()
+
+# def addheaders(list,columnhead):
+#     list.insert(0,columnhead)
+#
+# def writefile:
