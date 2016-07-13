@@ -15,24 +15,13 @@ import sys, subprocess
 
 csvfile= getfile.getfile()
 
-
-
-# getaverages.averagegains(filename)
-# getaverages.averagelosses(filename)
-
-
 def openfile():
     opener = "open" if sys.platform == "darwin" else "xdg-open"
     subprocess.call([opener, csvfile])
 
 
 getaverages.readfile(csvfile)
-
-# def writefile
-#
-# def closefile
-
-# openfile()
-
+getaverages.writefile(csvfile)
+openfile()
 
 
